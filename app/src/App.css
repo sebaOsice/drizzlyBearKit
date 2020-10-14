@@ -1,0 +1,9 @@
+.App {
+margin: "0px auto"
+}
+
+.section {
+  text-align: left;
+  max-width: 720px;
+  margin: 4rem auto auto;
+}
