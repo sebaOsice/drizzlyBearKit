@@ -8,24 +8,24 @@ FullStack EthDapp DevBox
 
 # Setup the drizzlyBear
 
-Clone this repositiory from your console to a destinated directory
+## Clone this repositiory from your console to a destinated directory
 
 ```bash 
 cd YOUR-WORKDIR
 mkdir YOUR_PROJECT_DIR
 git clone https://github.com/stereoIII6/drizzlyBearKit.git)
 ```
-
+## Initialize Serverside Code
 ```bash
-cd YOU_PROJECT_DIR
+cd YOUR_PROJECT_DIR
 npm i
 ```
-
+## Initialize Clientside Code
 ```bash
 cd app
 npm i
 ```
-
+## Compile and Migrate Contracts to Truffle
 ```bash
 cd ..
 truffle develop
