@@ -2,12 +2,14 @@
 FullStack EthDapp DevBox 10/2020
 
 Skills needed : 
+
 JS, NodeJS,
 React,Truffle,
 Drizzle,Solidity
 
 Requirements :
 
+MetaMask
 NodeJS
 NPM
 React
@@ -66,3 +68,21 @@ migrate
 cd app
 npm start
 ```
+
+## Have a look around... 
+
+You have probably noticed that your Browser already opened... http://localhost:3000
+
+If your Metamask is properly Configured and runs on your Ganache Chain you are all Set and ready to go
+
+You have access to following tools inside the drizzlyBear Kit... 
+
+Bootstrap
+Reactstrap
+ReactSpring
+Rimble
+Web3
+
+
+
+
