@@ -2,11 +2,11 @@
 FullStack EthDapp DevBox 
 [NodeJS,React,Truffle,Drizzle,Solidity]
 
-# What is drizzlyBear about
+## What is drizzlyBear about
 
 
 
-# Setup the drizzlyBear
+## Setup the drizzlyBear
 
 In order to use drizzlyBearKit you will need the latest Node Version, Git Version , Truffle Version and Ganache Version on your machine 
 
@@ -36,7 +36,7 @@ migrate
 .exit 
 ```
 
-> Edit the File ```bash truffleConfig.js ``` & ```bash app/src/drizzleOptions.js ``` and replace the localhost and port number for your ganache setup if neccessary 
+> Edit the File ```bash truffleConfig.js ```  &  ```bash app/src/drizzleOptions.js ```  and replace the localhost and port number for your ganache setup if neccessary 
 
 > Run the Development Server
 ```bash
