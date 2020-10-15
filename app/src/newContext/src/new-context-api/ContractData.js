@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 class ContractData extends Component {
   constructor(props) {
@@ -86,14 +87,14 @@ class ContractData extends Component {
     if (Array.isArray(displayData)) {
       const displayListItems = displayData.map((datum, index) => {
         return (
-          <li key={index}>
+          <ListGroupItem key={index} className="m-1 p-1 bg-info">
             {`${datum}`}
             {pendingSpinner}
-          </li>
+          </ListGroupItem>
         );
       });
 
-      return <ul>{displayListItems}</ul>;
+      return <ListGroup className="m-1 p-1 bg-dark">{displayListItems}</ListGroup>;
     }
 
     // If retun value is an object
@@ -104,19 +105,19 @@ class ContractData extends Component {
       Object.keys(displayData).forEach(key => {
         if (i != key) {
           displayObjectProps.push(
-            <li key={i}>
+            <ListGroupItem key={i} className="m-1 p-1 bg-info">
               <strong>{key}</strong>
               {pendingSpinner}
               <br />
               {`${displayData[key]}`}
-            </li>,
+            </ListGroupItem>,
           );
         }
 
         i++;
       });
 
-      return <ul>{displayObjectProps}</ul>;
+      return <ListGroup className="m-1 p-1 bg-dark">{displayObjectProps}</ListGroup>;
     }
 
     return (

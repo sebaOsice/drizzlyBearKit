@@ -3,7 +3,6 @@ import { DrizzleContext } from "@drizzle/react-plugin";
 import { Drizzle } from "@drizzle/store";
 import drizzleOptions from "./drizzleOptions";
 import MyComponent from "./MyComponent";
-import { Alert } from 'reactstrap';
 import "./App.css";
 
 
@@ -19,7 +18,7 @@ const App = () => {
             const { drizzle, drizzleState, initialized } = drizzleContext;
 
             if (!initialized) {
-              return (<h1>Loading ....</h1>)
+              return (<h1 className="alert alert-info mt-5">Loading ....</h1>)
             }
 
             return (

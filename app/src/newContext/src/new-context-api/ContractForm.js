@@ -107,12 +107,13 @@ class ContractForm extends Component {
               value={this.state[input.name]}
               placeholder={inputLabel}
               onChange={this.handleInputChange}
+              className="mt-1"
             />
           );
         })}
         <Button
           key="submit"
-          className="pure-button"
+          className="pure-button w-100 btn-warning mt-2"
           type="button"
           onClick={this.handleSubmit}
           color="info"

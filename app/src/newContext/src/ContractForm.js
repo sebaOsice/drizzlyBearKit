@@ -113,7 +113,7 @@ class ContractForm extends Component {
         })}
         <Button
           key="submit"
-          className="pure-button"
+          className="pure-button w-100 btn-warning"
           type="button"
           onClick={this.handleSubmit}
         >

@@ -1,6 +1,9 @@
 import React from "react";
 import { newContextComponents } from "./newContext/src";
 import logo from "./logo.png";
+import bg1 from "./bg1.png";
+import bg2 from "./bg2.png";
+import bg3 from "./bg3.png";
 import { Button, Nav, Navbar, NavItem, Form } from 'reactstrap';
 import { Blockie, EthAddress } from "rimble-ui";
 
@@ -20,25 +23,27 @@ export default ({ drizzle, drizzleState }) => {
           </Button>
           <Navbar className="collapse navbar-collapse" id="navbarCollapse">
             <NavItem>
-              <Button className="btn btn-outline-success ml-2 my-2 my-sm-0">STRAIN MARKET</Button>
-              <Button className="btn btn-outline-success ml-2 my-2 my-sm-0">ASSET EXCHANGE</Button>
+              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">STRAIN MARKET</Button>
+              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">ASSET EXCHANGE</Button>
             </NavItem>
 
 
 
             <Form className="form-inline mt-2 mt-md-0">
               <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-              <Button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</Button>
+              <Button className="btn btn-outline-success btn-dark my-2 my-sm-0" type="submit">Search</Button>
             </Form>
-            <Button className="btn btn-outline-warning ml-2 my-2 my-sm-0">< Blockie
+            <Button className="btn btn-outline-warning btn-dark ml-2 my- my-sm-0">< Blockie className="col d-inline"
               opts={{
                 seed: drizzleState.accounts[0],
-
-                size: 16,
-                scale: 1,
-
+                color: 'cyan',
+                bgcolor: 'magenta',
+                size: 5,
+                scale: 3,
+                spotcolor: 'orange'
               }}
-            /> {drizzleState.accounts[0].slice(0, 7)} ...  {drizzleState.accounts[0].slice(38, 42)}</Button>
+
+            /><p className="col d-inline" style={{ margin: 0, padding: 0, width: "auto", marginLeft: "0.5rem", marginBottom: "1rem" }}> {drizzleState.accounts[0].slice(0, 7)} ...  {drizzleState.accounts[0].slice(38, 42)} </p></Button>
           </Navbar>
         </Nav>
       </header>
@@ -51,32 +56,61 @@ export default ({ drizzle, drizzleState }) => {
           </ol>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <svg className="bd-placeholder-img" width="100%" height="330px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
+              <img className="bd-placeholder-img" width="100%" height="430px" src={bg1} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />
               <div className="container">
                 <div className="carousel-caption text-left">
-                  <h1>Example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                  <h1>Edit a Number on the BlockChain</h1>
+                  <div className="col-1 bg-info rounded-pill text-center d-inline-block"><h1># <ContractData
+                    drizzle={drizzle}
+                    drizzleState={drizzleState}
+                    contract="SimpleStorage"
+                    method="storedData"
+                  /></h1></div><div className="col-4 bg-info text-center rounded d-inline-block p-2 ml-3">
+
+                    <ContractForm drizzle={drizzle} contract="SimpleStorage" method="set" /></div>
                 </div>
               </div>
             </div>
             <div className="carousel-item">
-              <svg className="bd-placeholder-img" width="100%" height="330px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
-              <div className="container">
+              <img className="bd-placeholder-img" width="100%" height="430px" src={bg2} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
                 <div className="carousel-caption">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                  <h1>Display Data HardCoded on the Chain</h1>
+                  <div className="section">
+                    <div className="col-2 bg-info d-inline m-2">
+                      <ContractData
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="ComplexStorage"
+                        method="string1"
+                        toUtf8
+                      />
+                    </div><div className="col-2 bg-info d-inline m-2">
+
+                      <ContractData
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="ComplexStorage"
+                        method="string2"
+                        toUtf8
+                      />
+                    </div><div className="col-4 d-inline-block m-2" style={{ fontSize: "0.5em" }}>
+                      <ContractData
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="ComplexStorage"
+                        method="singleDD"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="carousel-item">
-              <svg className="bd-placeholder-img" width="100%" height="330px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
-              <div className="container">
+              <img className="bd-placeholder-img" width="100%" height="430px" src={bg3} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
                 <div className="carousel-caption text-right">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                  <h1>You want to go decentral with your Buisiness ?!?</h1>
+                  <p>Decentralized Applications socalled dApps are the undisputable Future of the digital and phiscal Industry. Blockchain Technology has revolutionized the World !</p>
+                  <p><a className="btn btn-lg btn-warning" href="#https://t.me/drizzlyBearSupportDojo" role="button">T.Me</a></p>
                 </div>
               </div>
             </div>
@@ -90,31 +124,13 @@ export default ({ drizzle, drizzleState }) => {
             <span className="sr-only">Next</span>
           </a>
         </div>
-        <div className="section">
-          <h2>SimpleStorage</h2>
-          <p>
-            This shows a simple ContractData component with no arguments, along
-            with a form to set its value.
-        </p>
-          <p>
-            <strong>Stored Value: </strong>
-            <ContractData
-              drizzle={drizzle}
-              drizzleState={drizzleState}
-              contract="SimpleStorage"
-              method="storedData"
-            />
-          </p>
-          <ContractForm drizzle={drizzle} contract="SimpleStorage" method="set" />
-        </div>
 
-        <div className="section">
-          <h2>TutorialToken</h2>
+        <div className="container section mb-5 pb-5">
+          <h2>Look how easy the ERC20 Works</h2>
           <p>
-            Here we have a form with custom, friendly labels. Also note the token
-            symbol will not display a loading indicator. We've suppressed it with
-          the <code>hideIndicator</code> prop because we know this variable is
-          constant.
+            Interact with it from the Client Side ...
+              <br /><br />
+            Yeah go ahead !
         </p>
           <p>
             <strong>Total Supply: </strong>
@@ -152,46 +168,123 @@ export default ({ drizzle, drizzleState }) => {
           />
         </div>
 
-        <div className="section">
-          <h2>ComplexStorage</h2>
-          <p>
-            Finally this contract shows data types with additional considerations.
-            Note in the code the strings below are converted from bytes to UTF-8
-            strings and the device data struct is iterated as a list.
+
+
+        <div class="container marketing">
+
+
+          <div class="row">
+            <div class="col-lg-4" style={{ textAlign: "center" }}>
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <h2>ANONYMOUS</h2>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+              <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
+            </div>
+            <div class="col-lg-4" style={{ textAlign: "center" }}>
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <h2>DECENTRAL</h2>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+              <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
+            </div>
+            <div class="col-lg-4" style={{ textAlign: "center" }}>
+              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <h2>AUTONOMOUS</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p><a class="btn btn-success" href="#" role="button">View details »</a></p>
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div className="container section mb-5 pb-5">
+            <h2>ERC721 or the socalled NFT's</h2>
+            <p>
+              Non Fungible Colletibles are the Future of DeFi ...
+              <br /><br />
+            Jump right in !
         </p>
-          <p>
-            <strong>String 1: </strong>
-            <ContractData
+            <p>
+              <strong>Total Supply: </strong>
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="NFToken"
+                method="totalSupply"
+                methodArgs={[{ from: drizzleState.accounts[0] }]}
+              />{" "}
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="NFToken"
+                method="symbol"
+                hideIndicator
+              />
+            </p>
+            <p>
+              <strong>My Balance: </strong>
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="NFToken"
+                method="balanceOf"
+                methodArgs={[drizzleState.accounts[0]]}
+              />
+            </p>
+            <h3>Mint Tokens</h3>
+            <ContractForm
               drizzle={drizzle}
-              drizzleState={drizzleState}
-              contract="ComplexStorage"
-              method="string1"
-              toUtf8
+              contract="NFToken"
+              method="mintToken"
+              labels={["To Address", "Token URI"]}
             />
-          </p>
-          <p>
-            <strong>String 2: </strong>
-            <ContractData
-              drizzle={drizzle}
-              drizzleState={drizzleState}
-              contract="ComplexStorage"
-              method="string2"
-              toUtf8
-            />
-          </p>
-          <strong>Single Device Data: </strong>
-          <ContractData
-            drizzle={drizzle}
-            drizzleState={drizzleState}
-            contract="ComplexStorage"
-            method="singleDD"
-          />
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+
+
         </div>
         <footer className="container">
           <p className="float-right"><a href="#">Back to top</a></p>
           <p>© 2020-2024 HEMPIRE DAO · <a href="#">The Green Paper</a> · <a href="#">Grow'd'Map</a> · <a href="#">Support</a></p>
         </footer>
       </main>
-    </div>
+    </div >
   );
 };

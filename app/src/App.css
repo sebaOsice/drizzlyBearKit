@@ -7,3 +7,16 @@ margin: "0px auto"
   max-width: 720px;
   margin: 4rem auto auto;
 }
+
+body::-webkit-scrollbar {
+  width: 0.3em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: tomato;
+  outline: 1px solid limegreen;
+}
