@@ -10,7 +10,7 @@ FullStack EthDapp DevBox
 
 Clone this repositiory from your console to a destinated directory
 
-''bash
+bash´´
 cd YOUR-WORKDIR
 mkdir YOUR_PROJECT_DIR
 git clone https://github.com/stereoIII6/drizzlyBearKit.git)
@@ -25,4 +25,4 @@ migrate
 .exit 
 cd app
 npm start
-''
+´´
