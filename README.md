@@ -77,10 +77,10 @@ If your Metamask is properly Configured and runs on your Ganache Chain you are a
 
 You have access to following tools inside the drizzlyBear Kit... 
 
-Bootstrap
-Reactstrap
-ReactSpring
-Rimble
+Bootstrap, 
+Reactstrap, 
+ReactSpring, 
+Rimble, 
 Web3
 
 
