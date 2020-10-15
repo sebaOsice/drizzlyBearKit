@@ -1,10 +1,29 @@
 # drizzlyBearKit
-FullStack EthDapp DevBox 
-[NodeJS,React,Truffle,Drizzle,Solidity]
+FullStack EthDapp DevBox 10/2020
+
+Skills needed : 
+JS, NodeJS,
+React,Truffle,
+Drizzle,Solidity
+
+Requirements :
+
+NodeJS
+NPM
+React
+Truffle 
+Ganache
+GIT
+
+Suggested IDE (Full Support) :
+
+Microsoft VSCode
+
+
 
 ## What is drizzlyBear about
 
-> DrizzlyBearKit s for those Devs who wanna iterate quick and want to save a bit of time on the next project
+> DrizzlyBearKit is for those Devs who wanna iterate quick and want to save a bit of time on the next project
 DrizzlyBear requires NodeJS, React, Truffle, and Ganche when you have those your ready to start dancing with a drizzlybear 
 Find out for yourself how easy this is ...
 
