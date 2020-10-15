@@ -9,12 +9,12 @@ Drizzle,Solidity
 
 Requirements :
 
-MetaMask
-NodeJS
-NPM
-React
-Truffle 
-Ganache
+Metamask, 
+NodeJS, 
+NPM, 
+React, 
+Truffle, 
+Ganache, 
 GIT
 
 Suggested IDE (Full Support) :
