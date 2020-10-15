@@ -4,7 +4,11 @@ FullStack EthDapp DevBox
 
 ## What is drizzlyBear about
 
+> DrizzlyBearKit s for those Devs who wanna iterate quick and want to save a bit of time on the next project
+DrizzlyBear requires NodeJS, React, Truffle, and Ganche when you have those your ready to start dancing with a drizzlybear 
+Find out for yourself how easy this is ...
 
+If you need Support t.me/drizzlyBearSupportDojo
 
 ## Setup the drizzlyBear
 
