@@ -71,17 +71,27 @@ npm start
 
 ## Have a look around... 
 
-You have probably noticed that your Browser already opened... http://localhost:3000
+>You have probably noticed that your Browser already opened... http://localhost:3000
 
-If your Metamask is properly Configured and runs on your Ganache Chain you are all Set and ready to go
+>If your Metamask is properly Configured and runs on your Ganache Chain you are all Set and ready to go
 
-You have access to following tools inside the drizzlyBear Kit... 
+>You have access to following tools inside the drizzlyBear Kit... 
 
 Bootstrap, 
 Reactstrap, 
 ReactSpring, 
 Rimble, 
 Web3
+
+>You have following Contracts embedded in the truffle box 
+
+Tutorial Token (ERC20) 
+Collectible Token (ERC721), 
+Simple Storage, 
+Complex Storage, 
+Lottery Contract, 
+2 Player Game Contract
+
 
 
 
