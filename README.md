@@ -1,20 +1,23 @@
 # drizzlyBearKit
 FullStack EthDapp DevBox 10/2020
 
-Skills needed : 
+Team Skillset : 
 
-JS, NodeJS,
-React,Truffle,
-Drizzle,Solidity
+JS
+NodeJS
+React
+Truffle
+Drizzle
+Solidity
 
-Requirements :
+System Requirements :
 
-Metamask, 
-NodeJS, 
-NPM, 
-React, 
-Truffle, 
-Ganache, 
+Metamask
+NodeJS
+NPM
+React 
+Truffle 
+Ganache 
 GIT
 
 Suggested IDE (Full Support) :
@@ -34,6 +37,8 @@ If you need Support t.me/drizzlyBearSupportDojo
 ## Setup the drizzlyBear
 
 In order to use drizzlyBearKit you will need the latest Node Version, Git Version , Truffle Version and Ganache Version on your machine 
+
+> Set Ganache to run on ``` http://localhost:7545 ``` with NetworkID ``` 5777 ``` to make it auto compatible with this drizzlyBear 
 
 > Clone this repositiory from your console to a destinated directory
 
@@ -77,19 +82,19 @@ npm start
 
 >You have access to following tools inside the drizzlyBear Kit... 
 
-Bootstrap, 
-Reactstrap, 
-ReactSpring, 
-Rimble, 
+Bootstrap 
+Reactstrap 
+ReactSpring 
+Rimble
 Web3
 
 >You have following Contracts embedded in the truffle box 
 
 Tutorial Token (ERC20) 
-Collectible Token (ERC721), 
-Simple Storage, 
-Complex Storage, 
-Lottery Contract, 
+Collectible Token (ERC721) 
+Simple Storage
+Complex Storage 
+Lottery Contract 
 2 Player Game Contract
 
 
