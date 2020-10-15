@@ -36,7 +36,7 @@ migrate
 .exit 
 ```
 
-> Edit the File ```bash truffleConfig.js ```  &  ```bash app/src/drizzleOptions.js ```  and replace the localhost and port number for your ganache setup if neccessary 
+> Edit the File ```./truffleConfig.js ```  &  ```./app/src/drizzleOptions.js ```  and replace the localhost and port number for your ganache setup if neccessary 
 
 > Run the Development Server
 ```bash
