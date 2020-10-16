@@ -2,7 +2,7 @@ import { drizzleConnect } from "@drizzle/react-plugin";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Nav, Navbar, NavItem, NavLink, Container, Form, Input, InputGroup, ListGroup, ListGroupItem } from 'reactstrap';
-
+const FontAwesome = require('react-fontawesome');
 
 const translateType = type => {
   switch (true) {
@@ -118,6 +118,12 @@ class ContractForm extends Component {
           onClick={this.handleSubmit}
         >
           Submit
+          <FontAwesome
+            className='super-crazy-colors'
+            name='file-signature'
+            size='1x'
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+          />
         </Button>
       </Form>
     );

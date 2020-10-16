@@ -1,44 +1,39 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 contract ComplexStorage {
-    uint public storeduint1 = 15;
-    uint public constant constuint = 16;
-    uint128 public investmentsLimit = 17055;
-    uint32 public investmentsDeadlineTimeStamp = uint32(now);
+    address public owner;
+    address public cntrct;
 
-    bytes16 public string1 = "test1";
-    bytes32 public string2 = "test1236";
-    string public string3 = "lets string something";
+    string[] private strings;
 
-    mapping (address => uint) uints1;
-    mapping (address => DeviceData) structs1;
+    mapping(address => DeviceData) structs1;
 
-    uint[] public uintarray;
-    DeviceData[] public deviceDataArray;
-    DeviceData public singleDD;
+    DeviceData public rumbleBB;
 
     struct DeviceData {
-        string deviceBrand;
-        string deviceYear;
-        string batteryWearLevel;
+        string anonym;
+        string decentral;
+        string autonom;
     }
 
     constructor() public {
-        address address1 = 0xbCcc714d56bc0da0fd33d96d2a87b680dD6D0DF6;
-        address address2 = 0xaee905FdD3ED851e48d22059575b9F4245A82B04;
+        owner = msg.sender;
+        cntrct = address(this);
+        addString("au");
+        addString("to");
+        addString("no");
+        addString("mo");
+        addString("us");
+        rumbleBB = DeviceData("anonymous", "decentralized", "autonomous");
+    }
 
-        uints1[address1] = 88;
-        uints1[address2] = 99;
+    function addString(string memory str) public {
+        strings.push(str);
+    }
 
-        structs1[address1] = DeviceData("deviceBrand", "deviceYear", "wearLevel");
-        structs1[address2] = DeviceData("deviceBrand2", "deviceYear2", "wearLevel2");
-        singleDD = DeviceData("deviceBrand3", "deviceYear3", "wearLevel3");
-
-        uintarray.push(8000);
-        uintarray.push(9000);
-
-        deviceDataArray.push(structs1[address1]);
-        deviceDataArray.push(structs1[address2]);
+    function getStrings() public view returns (string[] memory) {
+        return strings;
     }
 }

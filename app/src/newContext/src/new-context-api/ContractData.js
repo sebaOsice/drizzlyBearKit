@@ -87,14 +87,14 @@ class ContractData extends Component {
     if (Array.isArray(displayData)) {
       const displayListItems = displayData.map((datum, index) => {
         return (
-          <ListGroupItem key={index} className="m-1 p-1 bg-info">
+          <ListGroupItem key={index} className="m-0 p-1 bg-success">
             {`${datum}`}
             {pendingSpinner}
           </ListGroupItem>
         );
       });
 
-      return <ListGroup className="m-1 p-1 bg-dark">{displayListItems}</ListGroup>;
+      return <ListGroup className="m-1 p-1 bg-none">{displayListItems}</ListGroup>;
     }
 
     // If retun value is an object
@@ -105,7 +105,7 @@ class ContractData extends Component {
       Object.keys(displayData).forEach(key => {
         if (i != key) {
           displayObjectProps.push(
-            <ListGroupItem key={i} className="m-1 p-1 bg-info">
+            <ListGroupItem key={i} className="m-0 p-1 bg-success">
               <strong>{key}</strong>
               {pendingSpinner}
               <br />
@@ -117,7 +117,7 @@ class ContractData extends Component {
         i++;
       });
 
-      return <ListGroup className="m-1 p-1 bg-dark">{displayObjectProps}</ListGroup>;
+      return <ListGroup className="m-1 p-1 bg-none">{displayObjectProps}</ListGroup>;
     }
 
     return (

@@ -1,21 +1,23 @@
 import React from "react";
 import { newContextComponents } from "./newContext/src";
 import logo from "./logo.png";
+import fav from "./fav.png";
 import bg1 from "./bg1.png";
 import bg2 from "./bg2.png";
 import bg3 from "./bg3.png";
 import { Button, Nav, Navbar, NavItem, Form } from 'reactstrap';
 import { Blockie, EthAddress } from "rimble-ui";
+const FontAwesome = require('react-fontawesome');
 
-const { AccountData, ContractData, ContractForm, LoadingContainer } = newContextComponents;
+const { ContractData, ContractForm } = newContextComponents;
 
 export default ({ drizzle, drizzleState }) => {
   // destructure drizzle and drizzleState from props
   return (
     <div className="App">
       <header>
-        <Nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <Button className="navbar-brand bg-dark" href="#" >
+        <Nav className="navbar navbar-expand-md navbar-light fixed-top bg-light">
+          <Button className="navbar-brand bg-light" href="#" >
             <img src={logo} alt="hempire" style={{ height: "2em" }} />
           </Button>
           <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,18 +25,38 @@ export default ({ drizzle, drizzleState }) => {
           </Button>
           <Navbar className="collapse navbar-collapse" id="navbarCollapse">
             <NavItem>
-              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">TUTORIALS</Button>
-              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">PROJECTS <i className="fas fa-camera"></i></Button>
-              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">SPONSORING</Button>
+              <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">TUTORIALS <FontAwesome
+                className='super-crazy-colors'
+                name='graduation-cap'
+                size='1x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></Button>
+              <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">PROJECTS <FontAwesome
+                className='super-crazy-colors'
+                name='rocket'
+                size='1x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></Button>
+              <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">SPONSORING <FontAwesome
+                className='super-crazy-colors'
+                name='heart'
+                size='1x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></Button>
             </NavItem>
 
 
 
             <Form className="form-inline mt-2 mt-md-0">
               <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-              <Button className="btn btn-outline-success btn-dark my-2 my-sm-0" type="submit">Search</Button>
+              <Button className="btn btn-outline-success btn-light my-2 my-sm-0" type="submit">Search <FontAwesome
+                className='super-crazy-colors'
+                name='search'
+                size='1x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></Button>
             </Form>
-            <Button className="btn btn-outline-warning btn-dark ml-2 my- my-sm-0">< Blockie className="col d-inline"
+            <Button className="btn btn-outline-warning btn-light ml-2 my- my-sm-0">< Blockie className="col d-inline"
               opts={{
                 seed: drizzleState.accounts[0],
                 color: 'cyan',
@@ -75,15 +97,15 @@ export default ({ drizzle, drizzleState }) => {
             <div className="carousel-item">
               <img className="bd-placeholder-img" width="100%" height="430px" src={bg2} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
                 <div className="carousel-caption">
-                  <h1>Display Data HardCoded on the Chain</h1>
+                  <h1>Dynamic and Static Data on the Chain</h1>
                   <div className="section">
                     <div className="col-2 bg-info d-inline m-2">
                       <ContractData
                         drizzle={drizzle}
                         drizzleState={drizzleState}
                         contract="ComplexStorage"
-                        method="string1"
-                        toUtf8
+                        method="owner"
+
                       />
                     </div><div className="col-2 bg-info d-inline m-2">
 
@@ -91,15 +113,24 @@ export default ({ drizzle, drizzleState }) => {
                         drizzle={drizzle}
                         drizzleState={drizzleState}
                         contract="ComplexStorage"
-                        method="string2"
-                        toUtf8
+                        method="cntrct"
+
                       />
                     </div><div className="col-4 d-inline-block m-2" style={{ fontSize: "0.5em" }}>
                       <ContractData
                         drizzle={drizzle}
                         drizzleState={drizzleState}
                         contract="ComplexStorage"
-                        method="singleDD"
+                        method="rumbleBB"
+                      />
+                    </div>
+                    <div className="col-4 d-inline-block m-2" style={{ fontSize: "0.5em" }}>
+                      <ContractData
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="ComplexStorage"
+                        method="getStrings"
+                      // methodArgs={[drizzleState.accounts[0]]}
                       />
                     </div>
                   </div>
@@ -111,7 +142,12 @@ export default ({ drizzle, drizzleState }) => {
                 <div className="carousel-caption text-right">
                   <h1>You want to go decentral with your Buisiness ?!?</h1>
                   <p>Decentralized Applications socalled dApps are the undisputable Future of the digital and phiscal Industry. Blockchain Technology has revolutionized the World !</p>
-                  <p><a className="btn btn-lg btn-warning" href="#https://t.me/drizzlyBearSupportDojo" role="button">T.Me</a></p>
+                  <p><a className="btn btn-lg btn-warning" href="#https://t.me/drizzlyBearSupportDojo" role="button">T.Me <FontAwesome
+                    className='super-crazy-colors'
+                    name='mobile'
+                    size='1x'
+                    style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                  /></a></p>
                 </div>
               </div>
             </div>
@@ -127,46 +163,61 @@ export default ({ drizzle, drizzleState }) => {
         </div>
 
         <div className="container section mb-5 pb-5">
-          <h2>Look how easy the ERC20 Works</h2>
+          <h2 className="btn-success rounded- p-2 col-8 text-center">drizzlyBERC20 Dancefloor is 0xOpen !</h2>
           <p>
-            Interact with it from the Client Side ...
-              <br /><br />
-            Yeah go ahead !
+            Everybody grab a bear and shake a lil sum to the beat ... xD
+            <br /><br />
+              You'll find the Smart Contract for the Tutorial Token in <i className="alert-warning">./contracts/TutorialToken.sol</i>
+              Go ahead and Copy Paste and Rename the whole thing ... grab your Solidity Skillset and hack th ooops out of it !<br /><br />
+
+              Don't forget to adjust your <i className="alert-warning">./migrations/2_deploy_contracts.js</i> , <i className="alert-warning">./app/src/drizzleOptions.js</i> and
+              <i className="alert-warning">./app/src/MyComponents.js</i> ... Finally run <i className="alert-info">truffle compile</i> then <i className="alert-info">truffle migrate --reset</i>
+              &nbsp;in your root dir from the console to deploy the new version of your contract to your blockchain !
+            <br /><br />
+            Wowzers ... drizzlyBearAlistiCaliKushPiffinDopyeah !
         </p>
-          <p>
+          <p className="col-4 d-inline-block alert-success">
+            <strong>My Balance: </strong>
+            <h1 style={{ fontSize: "4em" }}><ContractData
+              drizzle={drizzle}
+              drizzleState={drizzleState}
+              contract="TutorialToken"
+              method="balanceOf"
+              methodArgs={[drizzleState.accounts[0]]}
+            />{" "}
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="TutorialToken"
+                method="symbol"
+                hideIndicator
+              /></h1>
+          </p>
+          <p className="col-4 d-inline-block alert-info" >
             <strong>Total Supply: </strong>
-            <ContractData
+            <h1 style={{ fontSize: "4em" }}><ContractData
               drizzle={drizzle}
               drizzleState={drizzleState}
               contract="TutorialToken"
               method="totalSupply"
               methodArgs={[{ from: drizzleState.accounts[0] }]}
             />{" "}
-            <ContractData
-              drizzle={drizzle}
-              drizzleState={drizzleState}
-              contract="TutorialToken"
-              method="symbol"
-              hideIndicator
-            />
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="TutorialToken"
+                method="symbol"
+                hideIndicator
+              /></h1>
           </p>
-          <p>
-            <strong>My Balance: </strong>
-            <ContractData
+          <p className="col-4 d-inline-block">
+            <h3>Send Tokens</h3>
+            <ContractForm
               drizzle={drizzle}
-              drizzleState={drizzleState}
               contract="TutorialToken"
-              method="balanceOf"
-              methodArgs={[drizzleState.accounts[0]]}
-            />
-          </p>
-          <h3>Send Tokens</h3>
-          <ContractForm
-            drizzle={drizzle}
-            contract="TutorialToken"
-            method="transfer"
-            labels={["To Address", "Amount to Send"]}
-          />
+              method="transfer"
+              labels={["To Address", "Amount to Send"]}
+            /></p>
         </div>
 
 
@@ -176,19 +227,19 @@ export default ({ drizzle, drizzleState }) => {
 
           <div class="row">
             <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>ANONYMOUS</h2>
               <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
               <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
             </div>
             <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>DECENTRAL</h2>
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
               <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
             </div>
             <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" ><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>AUTONOMOUS</h2>
               <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
               <p><a class="btn btn-success" href="#" role="button">View details »</a></p>
@@ -198,45 +249,56 @@ export default ({ drizzle, drizzleState }) => {
           <hr class="featurette-divider" />
 
           <div className="container section mb-5 pb-5">
-            <h2>ERC721 or the socalled NFT's</h2>
+            <h2>I think my Drizzly's going all Nifty !</h2>
             <p>
-              Non Fungible Colletibles are the Future of DeFi ...
-              <br /><br />
+              Explore the Endless possibilities of ERC721 or socalled NFT's Non Fungible Tokens in this Sandbox
+              Same as above copy and paste the oops out of the <i className="alert-warning">./contracts/NFToken.sol</i> you know the rest ... So pick up a shovel if you wanna get dirty o0 <br /><br />
             Jump right in !
         </p>
-            <p>
-              <strong>Total Supply: </strong>
-              <ContractData
+            <p className="col-4 d-inline-block">
+
+              <strong>My Collectibles : <ContractData
                 drizzle={drizzle}
                 drizzleState={drizzleState}
                 contract="NFToken"
                 method="totalSupply"
-                methodArgs={[{ from: drizzleState.accounts[0] }]}
-              />{" "}
+
+
+              /> cllc</strong>
               <ContractData
                 drizzle={drizzle}
                 drizzleState={drizzleState}
                 contract="NFToken"
-                method="symbol"
-                hideIndicator
+                method="getTypes"
               />
             </p>
-            <p>
-              <strong>My Balance: </strong>
-              <ContractData
+            <p className="col-4 d-inline-block">
+              <strong>All Collectibles : <ContractData
                 drizzle={drizzle}
                 drizzleState={drizzleState}
                 contract="NFToken"
                 method="balanceOf"
                 methodArgs={[drizzleState.accounts[0]]}
+
+              /> cllc</strong>
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="NFToken"
+                method="ownerTokens"
+                methodArgs={[drizzleState.accounts[0]]}
+
+
               />
             </p>
+
+
             <h3>Mint Tokens</h3>
             <ContractForm
               drizzle={drizzle}
               contract="NFToken"
-              method="mintToken"
-              labels={["To Address", "Token URI"]}
+              method="mintGovTokenStock"
+              labels={["To Address", "Token Data"]}
             />
           </div>
 
