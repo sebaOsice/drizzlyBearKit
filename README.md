@@ -39,9 +39,9 @@ Find out for yourself how easy this is ...
 In order to use drizzlyBearKit you will need the latest Node Version, Git Version , Truffle Version and Ganache Version on your machine 
 
 > Link Ganache to the Project by adding the ```./truffleConfig.js ``` 
-(https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_truff.png)
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_truff.png)
 > Then make it run on ``` http://localhost:7545 ``` with NetworkID ``` 5777 ``` to make it auto compatible with this drizzlyBear 
-(https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_net.png)
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_net.png)
 > Clone this repositiory from your console to a destinated directory
 
 ```bash 
