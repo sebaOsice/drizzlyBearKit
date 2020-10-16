@@ -1,20 +1,23 @@
 # drizzlyBearKit
 FullStack EthDapp DevBox 10/2020
 
-Skills needed : 
+Team Skillset : 
 
-JS, NodeJS,
-React,Truffle,
-Drizzle,Solidity
+JS
+NodeJS
+React
+Truffle
+Drizzle
+Solidity
 
-Requirements :
+System Requirements :
 
-Metamask, 
-NodeJS, 
-NPM, 
-React, 
-Truffle, 
-Ganache, 
+Metamask
+NodeJS
+NPM
+React 
+Truffle 
+Ganache 
 GIT
 
 Suggested IDE (Full Support) :
@@ -25,15 +28,23 @@ Microsoft VSCode
 
 ## What is drizzlyBear about
 
-> DrizzlyBearKit is for those Devs who wanna iterate quick and want to save a bit of time on the next project
+DrizzlyBearKit is for those Devs who wanna iterate quick and want to save a bit of time on the next project
 DrizzlyBear requires NodeJS, React, Truffle, and Ganche when you have those your ready to start dancing with a drizzlybear 
 Find out for yourself how easy this is ...
 
-If you need Support t.me/drizzlyBearSupportDojo
+> If you need Support t.me/drizzlyBearSupportDojo
 
 ## Setup the drizzlyBear
 
 In order to use drizzlyBearKit you will need the latest Node Version, Git Version , Truffle Version and Ganache Version on your machine 
+
+> Link Ganache to the Project by adding the ```./truffleConfig.js ``` 
+
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_truff.png)
+
+> Then make it run on ``` http://localhost:7545 ``` with NetworkID ``` 5777 ``` to make it auto compatible with this drizzlyBear 
+
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/ganache_net.png)
 
 > Clone this repositiory from your console to a destinated directory
 
@@ -72,24 +83,24 @@ npm start
 ## Have a look around... 
 
 >You have probably noticed that your Browser already opened... http://localhost:3000
-
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/dAppMetaConnect.png)
 >If your Metamask is properly Configured and runs on your Ganache Chain you are all Set and ready to go
-
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/dAppFirstLook.png)
 >You have access to following tools inside the drizzlyBear Kit... 
 
-Bootstrap, 
-Reactstrap, 
-ReactSpring, 
-Rimble, 
+Bootstrap 
+Reactstrap 
+ReactSpring 
+Rimble
 Web3
 
 >You have following Contracts embedded in the truffle box 
 
 Tutorial Token (ERC20) 
-Collectible Token (ERC721), 
-Simple Storage, 
-Complex Storage, 
-Lottery Contract, 
+Collectible Token (ERC721) 
+Simple Storage
+Complex Storage 
+Lottery Contract 
 2 Player Game Contract
 
 
