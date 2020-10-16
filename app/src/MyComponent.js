@@ -23,8 +23,9 @@ export default ({ drizzle, drizzleState }) => {
           </Button>
           <Navbar className="collapse navbar-collapse" id="navbarCollapse">
             <NavItem>
-              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">STRAIN MARKET</Button>
-              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">ASSET EXCHANGE</Button>
+              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">TUTORIALS</Button>
+              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">PROJECTS <i className="fas fa-camera"></i></Button>
+              <Button className="btn btn-outline-success btn-dark ml-2 my-2 my-sm-0">SPONSORING</Button>
             </NavItem>
 
 
