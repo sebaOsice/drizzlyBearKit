@@ -79,7 +79,7 @@ export default ({ drizzle, drizzleState }) => {
           </ol>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="bd-placeholder-img" width="100%" height="430px" src={bg1} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />
+              <img className="bd-placeholder-img" width="100%" height="630px" src={bg1} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />
               <div className="container">
                 <div className="carousel-caption text-left">
                   <h1>Edit a Number on the BlockChain</h1>
@@ -95,7 +95,7 @@ export default ({ drizzle, drizzleState }) => {
               </div>
             </div>
             <div className="carousel-item">
-              <img className="bd-placeholder-img" width="100%" height="430px" src={bg2} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
+              <img className="bd-placeholder-img" width="100%" height="630px" src={bg2} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
                 <div className="carousel-caption">
                   <h1>Dynamic and Static Data on the Chain</h1>
                   <div className="section">
@@ -116,7 +116,7 @@ export default ({ drizzle, drizzleState }) => {
                         method="cntrct"
 
                       />
-                    </div><div className="col-4 d-inline-block m-2" style={{ fontSize: "0.5em" }}>
+                    </div><div className="col-4 d-inline-block m-2" style={{ fontSize: "1em" }}>
                       <ContractData
                         drizzle={drizzle}
                         drizzleState={drizzleState}
@@ -124,7 +124,7 @@ export default ({ drizzle, drizzleState }) => {
                         method="rumbleBB"
                       />
                     </div>
-                    <div className="col-4 d-inline-block m-2" style={{ fontSize: "0.5em" }}>
+                    <div className="col-4 d-inline-block m-2" style={{ fontSize: "1em" }}>
                       <ContractData
                         drizzle={drizzle}
                         drizzleState={drizzleState}
@@ -138,7 +138,7 @@ export default ({ drizzle, drizzleState }) => {
               </div>
             </div>
             <div className="carousel-item">
-              <img className="bd-placeholder-img" width="100%" height="430px" src={bg3} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
+              <img className="bd-placeholder-img" width="100%" height="630px" src={bg3} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" />              <div className="container">
                 <div className="carousel-caption text-right">
                   <h1>You want to go decentral with your Buisiness ?!?</h1>
                   <p>Decentralized Applications socalled dApps are the undisputable Future of the digital and phiscal Industry. Blockchain Technology has revolutionized the World !</p>

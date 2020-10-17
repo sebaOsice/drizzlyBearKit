@@ -9,6 +9,12 @@ module.exports = {
       host: "127.0.0.1",
       port: 7545,
       network_id: "5777"
+    },
+    xDai: { // default with truffle unbox is 7545, but we can use develop to test changes, ex. truffle migrate --network develop
+      host: "https://xdai.poanetwork.dev",
+      chain_id: 100,
+      symbol: "xDai",
+      explorer: "https://blockscout.com/poa/xdai"
     }
   }
 };
