@@ -36,6 +36,8 @@ Find out for yourself how easy this is ...
 
 > Follow me decentral on Status https://join.status.im/u/0x04d414fbf6100d04d84d52d9574e313939261335e76e6685bf6421d53877f8694e3672fbd7485d73e4356604af2d92afab718a9dfdf0a914e6cf64afe1ac693b77
 
+> Check out this Repo @ https://drizzlyBear.lifeand.eth
+
 ## Setup the drizzlyBear
 
 In order to use drizzlyBearKit you will need the latest Node Version, Git Version , Truffle Version and Ganache Version on your machine 
