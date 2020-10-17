@@ -32,7 +32,8 @@ DrizzlyBearKit is for those Devs who wanna iterate quick and want to save a bit 
 DrizzlyBear requires NodeJS, React, Truffle, and Ganche when you have those your ready to start dancing with a drizzlybear 
 Find out for yourself how easy this is ...
 
-> If you need Support https://t.me/drizzlyBearSupportDojo
+> If you are happy with Bot Support https://t.me/drizzlyBearSupportDojo
+
 > Follow me decentral on Status https://join.status.im/u/0x04d414fbf6100d04d84d52d9574e313939261335e76e6685bf6421d53877f8694e3672fbd7485d73e4356604af2d92afab718a9dfdf0a914e6cf64afe1ac693b77
 
 ## Setup the drizzlyBear
