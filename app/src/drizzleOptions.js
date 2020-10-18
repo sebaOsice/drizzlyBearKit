@@ -3,6 +3,7 @@ import ComplexStorage from "./contracts/ComplexStorage.json";
 import SimpleStorage from "./contracts/SimpleStorage.json";
 import TutorialToken from "./contracts/TutorialToken.json";
 import NFToken from "./contracts/NFToken.json";
+import GBook from "./contracts/GBook.json";
 const devProvider = "ws://localhost:7545";
 const buildProvider = {
   host: "https://xdai.poanetwork.dev",
@@ -15,10 +16,10 @@ const web3 = new Web3(Web3.givenProvider || devProvider);
 
 const options = {
   web3,
-  contracts: [SimpleStorage, ComplexStorage, TutorialToken, NFToken],
+  contracts: [SimpleStorage, ComplexStorage, TutorialToken, NFToken, GBook],
   events: {
-    SimpleStorage: ["StorageSet"],
-  },
+    SimpleStorage: ["StorageSet"]
+  }
 };
 
 export default options;

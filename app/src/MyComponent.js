@@ -305,13 +305,58 @@ export default ({ drizzle, drizzleState }) => {
           <hr class="featurette-divider" />
 
           <div class="row featurette">
-            <div class="col-md-7">
-              <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
             <div class="col-md-5">
-              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+              <h3>Blockchain Guestbook</h3>
+              <ContractData
+                drizzle={drizzle}
+                drizzleState={drizzleState}
+                contract="GBook"
+                method="showUser"
+
+              />
+              <h3>UserList</h3>
+              <p className="d-block">
+                <ContractData
+                  drizzle={drizzle}
+                  drizzleState={drizzleState}
+                  contract="GBook"
+                  method="showUsers"
+
+                />
+              </p>
+              <p class="col-md-3 d-inline-block"> <h3>Set User Name</h3>
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="setUserName"
+                  labels={["Screen Name"]}
+                /></p>
+              <p class="col-md-3 d-inline-block"> <h3>Edit User Name</h3>
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="editUserName"
+                  labels={["Screen Name"]}
+                /></p>
+              <p class="col-md-3 d-inline-block"> <h3>Write a Post</h3>
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="writePost"
+                  labels={["Title", "Content"]}
+                /></p>
             </div>
+            <div class="col-md-7">
+              <h3>The Postboard</h3>
+              <p className="d-block">
+                <ContractData
+                  drizzle={drizzle}
+                  drizzleState={drizzleState}
+                  contract="GBook"
+                  method="showPosts"
+
+                />
+              </p>            </div>
           </div>
 
           <hr class="featurette-divider" />
