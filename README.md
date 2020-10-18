@@ -71,9 +71,9 @@ npm i
 ```bash
 cd ..
 truffle develop
-compile
-migrate 
-.exit 
+ >compile
+ >migrate 
+ >.exit 
 ```
 
 > Edit the File ```./truffleConfig.js ```  &  ```./app/src/drizzleOptions.js ```  and replace the localhost and port number for your ganache setup if neccessary 
@@ -92,20 +92,39 @@ npm start
 ![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/dAppFirstLook.png)
 >You have access to following tools inside the drizzlyBear Kit... 
 
-Bootstrap 
-Reactstrap 
-ReactSpring 
+Bootstrap
+Reactstrap
+ReactSpring
 Rimble
 Web3
 
 >You have following Contracts embedded in the truffle box 
 
-Tutorial Token (ERC20) 
-Collectible Token (ERC721) 
+Tutorial Token (ERC20)
+Collectible Token (ERC721)
 Simple Storage
-Complex Storage 
-Lottery Contract 
-2 Player Game Contract
+Complex Storage
+Blockchain Guestbook [NEW]
+Lottery Contract [Coming Soon]
+2 Player Game Contract [Comin Soon]
+
+# III6 Tutorials on drizzlyBearKit [Coming Soon]
+
+## I - Workspace Desktop Environment
+
+## II drizzlyBearKit Dev Setup
+
+## III Start dancing with drizzlyBears
+
+## IV Your first steps into Solidity
+
+## V Own theese Contracts
+
+## VI Minting ERC20's ... Own them Tokens
+
+## VII Non Fungible Collectables ... the Beras are loose 
+
+## VIII ...
 
 
 
