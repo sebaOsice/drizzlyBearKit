@@ -1,5 +1,6 @@
 # drizzlyBearKit
 FullStack EthDapp DevBox 10/2020
+![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/drizzly.png)
 
 Team Skillset : 
 
@@ -34,9 +35,15 @@ Find out for yourself how easy this is ...
 
 > If you are happy with Bot Support https://t.me/drizzlyBearSupportDojo
 
-> Follow me decentral on Status https://join.status.im/u/0x04d414fbf6100d04d84d52d9574e313939261335e76e6685bf6421d53877f8694e3672fbd7485d73e4356604af2d92afab718a9dfdf0a914e6cf64afe1ac693b77
+## Follow me decentral 
 
-> Check out this Repo @ https://drizzlyBear.lifeand.eth
+> on Status https://join.status.im/u/0x04d414fbf6100d04d84d52d9574e313939261335e76e6685bf6421d53877f8694e3672fbd7485d73e4356604af2d92afab718a9dfdf0a914e6cf64afe1ac693b77
+
+> on GitCoin https://gitcoin.co/stereoiii6
+
+> on Uptrennd https://www.uptrennd.com/user/NTUyNjE=
+
+> on publish0x https://www.publish0x.com?a=lNbWJrQayg
 
 ## Setup the drizzlyBear
 
@@ -105,8 +112,9 @@ Collectible Token (ERC721)
 Simple Storage
 Complex Storage
 Blockchain Guestbook [NEW]
+Basic Task List [Coming Soon]
 Lottery Contract [Coming Soon]
-2 Player Game Contract [Comin Soon]
+2 Player Game Contract [Coming Soon]
 
 # III6 Tutorials on drizzlyBearKit [Coming Soon]
 
@@ -124,7 +132,7 @@ Lottery Contract [Coming Soon]
 
 ## VII Non Fungible Collectables ... the Beras are loose 
 
-## VIII ...
+## VIII How to deploy decentral drizzlyBears 
 
 
 
