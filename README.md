@@ -1,5 +1,6 @@
 # drizzlyBearKit
-FullStack EthDapp DevBox 10/2020
+## FullStack EthDapp DevBox 10/2020
+
 ![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/drizzly.png)
 
 Team Skillset : 
