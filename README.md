@@ -123,7 +123,7 @@ Lottery Contract [Coming Soon]
 
 # III6 Tutorials on drizzlyBearKit [Coming Soon]
 
-## I - Workspace Desktop Environment
+## I Workspace Desktop Environment
 
 ## II drizzlyBearKit Dev Setup
 
