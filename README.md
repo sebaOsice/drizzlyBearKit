@@ -95,9 +95,13 @@ npm start
 ## Have a look around... 
 
 >You have probably noticed that your Browser already opened... http://localhost:3000
+
 ![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/dAppMetaConnect.png)
+
 >If your Metamask is properly Configured and runs on your Ganache Chain you are all Set and ready to go
+
 ![image](https://github.com/stereoIII6/drizzlyBearKit/blob/master/dAppFirstLook.png)
+
 >You have access to following tools inside the drizzlyBear Kit... 
 
 Bootstrap
