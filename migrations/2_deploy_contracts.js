@@ -7,6 +7,7 @@ const Todo = artifacts.require("Todo");
 const iii6Log = artifacts.require("iii6Log");
 const III6 = artifacts.require("III6");
 const hempireAssets = artifacts.require("hempireAssets");
+const MilitaryChess = artifacts.require("MilitaryChess");
 
 module.exports = function (deployer) {
   deployer.deploy(SimpleStorage);
@@ -18,4 +19,5 @@ module.exports = function (deployer) {
   deployer.deploy(iii6Log); // abstract contract internal
   deployer.deploy(III6);
   deployer.deploy(hempireAssets); // abstract contract internal
+  deployer.deploy(MilitaryChess);
 };
