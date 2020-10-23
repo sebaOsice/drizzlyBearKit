@@ -1,0 +1,464 @@
+pragma solidity >=0.6.6<0.7.0;
+
+contract MilitaryChess
+{
+
+   address     Player1;
+   bool public Player1Signed=false;
+   bool        Player1End=false;
+   bool public Player1Aktiv=false;
+   address     Player2;
+   bool public Player2Signed=false;
+   bool        Player2End=false;
+   bool public Player2Aktiv=false;
+
+   uint public GameStatus;
+   uint public Round;
+   bool        Flag;
+   bool [8]    BattelfieldNS = [false]; //mehrdimensonale arrays nicht möglich NORD>>SOUTH
+   bool [8]    BattelfieldWE = [false];//WEST>>EAST
+   uint public PositionWE;
+   uint public PositionNS;
+   
+
+
+    
+
+    enum ActionUnit{GoLeft,GoRight,GoForward,GoBackward,SitStill}   // User Datentyp 
+    ActionUnit UnitActions;                                         // Variable mit User Datentyp
+    enum ActionHeadQuarter{Collect,Order}                                  //User Datentyp
+    ActionHeadQuarter HeadActions;                                         //Variable mit User Datentyp
+    enum OrderUnit{Troops,Tanks,Mech}
+    OrderUnit UnitOrders;
+    enum  CommandGame{Player1Aktiv,Player1End,Player1HQ,Player2Aktiv,Player2End,Player2HQ}
+    CommandGame GameCommands; 
+
+    struct UnitPL
+    {
+        string name;
+        uint strenth; // infantrie 1 panzer 3 Roboter 6
+        uint armor;   // infantrie 1 panzer 4 Roboter 5
+        uint among;   //anzahl der Truppen in der Einheit(infantrie 4,panzer 3,roboter 2)
+        bool action;    
+        bool commander;      //0 ist Spieler1 und 1 ist Spieler2
+        uint positionWE;
+        uint positionNS;
+    }
+   
+    struct HeadQuarter
+    {
+        string Name;
+        address Player;
+        uint PointsHQ;
+        bool order;
+        bool FlagHQ;
+        uint positionWE ;
+        uint positionNS ;
+    }
+
+    HeadQuarter[] public HeadQuarters; //HeadQuarters ist Inhalt
+    UnitPL[] public UnitsPL1;
+    UnitPL[] public UnitsPL2;
+    
+    HeadQuarter public _tempArray;
+    UnitPL  public tempUnitPlayer;
+    
+
+    /*#############################Functions########################*/
+
+    function collectCommandPoints() public  
+    {
+        uint x;
+        if (GameStatus==15)//normalerweise 10 aber zum testen 15
+        {
+           x=0;
+        }
+        if (GameStatus==25)//normalerweise 20 aber zum testen 25
+        {
+           x=1;    
+        }
+        HeadQuarter  storage tempStorage = HeadQuarters[x];//returns the 0th element
+        tempStorage.PointsHQ=tempStorage.PointsHQ +1; //Dies zeile geht 
+        _tempArray =tempStorage; // _tempArray ist der Inhalt von Headquarters[0]das klappt
+        HeadQuarters[x]=_tempArray;
+    }
+
+   
+    function signUserHeadQuarter(string memory _name,address _Player)public // Spieler bekommen ein Hauptquartier zugewiesen
+    {
+        HeadQuarters.push(HeadQuarter(_name,_Player,0,false,Flag,PositionWE,PositionNS));      
+    }
+    function gameInit ()public returns(uint) //Spieler be
+    {
+        uint _Commandos;
+        if (GameStatus < 5)          //Spiel initalisierung
+        {
+            
+            _Commandos = uint(GameCommands); // datentyp Umwandlung enum >> uint
+
+            if(_Commandos==2)//enum CommandGame.Player1HQ
+            {
+                Flag= false;
+                PositionNS=0;
+                PositionWE=4;
+            //   signUserHeadQuarter();
+                Player1Signed=true;
+                GameStatus=1;
+            }
+            if(_Commandos==5 && GameStatus==1)//enum CommandGame.Player2HQ
+            {
+                Flag= true;
+                PositionNS=8;
+                PositionWE=4;
+              //  signUserHeadQuarter();
+                Player2Signed=true;
+                GameStatus=2;
+            }
+            if(Player1Signed && Player2Signed)
+            {
+                GameStatus=5;// zuzsatzzeile: prüfen ob user echt(valid)
+            }
+            
+        }
+        return GameStatus;
+    }
+    function round()public returns(uint)
+    {   
+        uint _CommandosRND;
+        _CommandosRND = uint(GameCommands); 
+        if (GameStatus==5 || GameStatus==30)          //Runde initalisierung
+        {
+            Round =Round+1;
+            
+            GameStatus=10;
+        }
+        if (!Player1Aktiv && GameStatus==10) //Spieler initialisieren
+        {
+            
+        
+          // setActionBitUnit(); 
+          // collectCommandPoints();
+          // checkOrder();
+          
+            GameStatus=11;
+        }
+        if (!Player1Aktiv && GameStatus==11) //Spieler ist dran
+        {
+            GameStatus=15;
+            Player1Aktiv=true;
+        }
+        if (_CommandosRND==1 && GameStatus==15) //Spieler beendet seine runde
+        {
+            GameStatus=20;
+            Player1Aktiv=false;            
+        }
+        if (!Player2Aktiv && GameStatus==20) //Spieler initialisieren
+        {
+            
+         
+           //setActionBitUnit();
+            //collectCommandPoints(); 
+           // checkOrder();
+
+            GameStatus=21;
+        }
+        if (!Player2Aktiv && GameStatus==21)
+        {
+            GameStatus=25;
+            Player2Aktiv=true;
+        }
+        if (_CommandosRND==4 && GameStatus==25)
+        {
+            GameStatus=30;
+            Player2Aktiv=false;
+        }
+        return GameStatus;
+    }
+
+
+  /*############################### Command of Players#################################*/
+
+
+    function setPlayer1End()public
+    {
+        GameCommands =CommandGame.Player1End;
+       // Player1End=true;      
+    }
+    
+    function setPlayer1HQ()public
+    {
+        GameCommands =CommandGame.Player1HQ;
+    }
+    function setPlayer2End()public
+    {
+        GameCommands =CommandGame.Player2End;
+       // Player2End=true;      
+    }
+    function setPlayer2HQ()public
+    {
+        GameCommands =CommandGame.Player2HQ;
+    }
+
+    function getGameCommands()public view returns(CommandGame)
+    {
+        
+        return GameCommands;
+    }
+
+    /* Movement of Units*/
+
+    function setGoForward()public
+    {
+        UnitActions =ActionUnit.GoForward;
+        //getUnitActions();
+        //newPositionUnit();
+    }
+
+     function setGoBackward()public
+    {
+        UnitActions =ActionUnit.GoBackward;
+    }
+
+     function setGoLeft()public
+    {
+        UnitActions =ActionUnit.GoLeft;
+    }
+
+     function setGoRight()public
+    {
+        UnitActions =ActionUnit.GoRight;
+    }
+
+    function setSitStill()public
+    {
+        UnitActions =ActionUnit.SitStill;
+    }
+
+    function getUnitActions()public view returns(ActionUnit)
+    {
+        return UnitActions;
+    }
+
+    function newPositionUnit(uint _ActionUnit,uint _ArrayUnit) public
+    {
+         
+        
+        UnitPL storage tempUnit1=UnitsPL1[_ArrayUnit];        
+        UnitPL storage tempUnit2=UnitsPL2[_ArrayUnit];
+       
+        if(Player1Aktiv)
+        {
+            tempUnitPlayer=tempUnit1;
+        }
+
+        if(Player2Aktiv)
+        {
+            tempUnitPlayer=tempUnit2;
+        }
+        
+        if (_ActionUnit ==0) //positiv von unten nach oben(vorwärts)
+        {
+           
+           PositionWE= tempUnitPlayer.positionWE;
+           PositionNS= tempUnitPlayer.positionNS;
+           BattelfieldWE[PositionWE]=false;
+           BattelfieldNS[PositionNS]=false;//alte position merken und bit auf schlachtfeld auf null setzen.
+           tempUnitPlayer.positionNS = tempUnitPlayer.positionNS+1;
+           PositionWE=tempUnitPlayer.positionWE;
+           PositionNS=tempUnitPlayer.positionNS;
+           //prüfen ob kampfstatt findet oder truppen zusammen gelegt werden.
+           BattelfieldWE[PositionWE]=true;
+           BattelfieldNS[PositionNS]=true;  //neue position auf true setzen 
+
+           //Actionsbit in der Einheit zurücksetzen HIER EINHEIT ist geladen.
+        }
+
+        if(_ActionUnit==1)//negativ (rückwärts)
+        {
+           PositionWE= tempUnitPlayer.positionWE;
+           PositionNS= tempUnitPlayer.positionNS;
+           BattelfieldWE[PositionWE]=false;
+           BattelfieldNS[PositionNS]=false;//alte position merken und bit auf schlachtfeld auf null setzen.
+           tempUnitPlayer.positionNS = tempUnitPlayer.positionNS-1;
+           PositionWE=tempUnitPlayer.positionWE;
+           PositionNS=tempUnitPlayer.positionNS;
+           //prüfen ob kampfstatt findet oder truppen zusammen gelegt werden.
+           BattelfieldWE[PositionWE]=true;
+           BattelfieldNS[PositionNS]=true;  //neue position auf true setzen   
+        }
+
+        if(_ActionUnit ==2)//negativ (links)
+        {
+           PositionWE= tempUnitPlayer.positionWE;
+           PositionNS= tempUnitPlayer.positionNS;
+           BattelfieldWE[PositionWE]=false;
+           BattelfieldNS[PositionNS]=false;//alte position merken und bit auf schlachtfeld auf null setzen.
+           tempUnitPlayer.positionWE = tempUnitPlayer.positionWE-1;
+           PositionWE=tempUnitPlayer.positionWE;
+           PositionNS=tempUnitPlayer.positionNS;
+           //prüfen ob kampfstatt findet oder truppen zusammen gelegt werden.
+           BattelfieldWE[PositionWE]=true;
+           BattelfieldNS[PositionNS]=true;  //neue position auf true setzen 
+        }
+        if(_ActionUnit ==3)//positiv (rechts)
+        {
+           PositionWE= tempUnitPlayer.positionWE;
+           PositionNS= tempUnitPlayer.positionNS;
+           BattelfieldWE[PositionWE]=false;
+           BattelfieldNS[PositionNS]=false;//alte position merken und bit auf schlachtfeld auf null setzen.
+           tempUnitPlayer.positionWE = tempUnitPlayer.positionWE+1;
+           PositionWE=tempUnitPlayer.positionWE;
+           PositionNS=tempUnitPlayer.positionNS;
+           //prüfen ob kampfstatt findet oder truppen zusammen gelegt werden.
+           BattelfieldWE[PositionWE]=true;
+           BattelfieldNS[PositionNS]=true;  //neue position auf true setzen 
+
+
+        }
+        if (Player1Aktiv)
+        {
+            UnitsPL1[_ArrayUnit]=tempUnitPlayer;
+        }
+        if(Player2Aktiv)
+        {
+            UnitsPL2[_ArrayUnit]=tempUnitPlayer;
+        }
+    }
+
+
+
+    /*######################Actions in Headquarter#######################*/
+
+
+  
+    function setOrderTroop()public
+    {
+        UnitOrders =OrderUnit.Troops;
+        //getOrderUnit();
+    }
+
+    function setOrderTank()public
+    {
+        UnitOrders =OrderUnit.Tanks;
+    }
+
+    function setOrderMech()public
+    {
+        UnitOrders =OrderUnit.Mech;
+    }
+
+    function getOrderUnit()public view returns (OrderUnit)  //Auswertung vom User welche einheit er will
+    {
+        return UnitOrders;
+    }
+
+    
+
+    function checkOrder()public returns (uint _Points ) //Prüft die mögliche Versärkung
+    {
+        uint _CommandPointsHQ;
+        if (GameStatus==15) //zum test 15 im ABlauf 10
+        {
+            HeadQuarter  storage tempStorage1 = HeadQuarters[0];//returns the 0th element
+            _CommandPointsHQ=tempStorage1.PointsHQ;
+
+        }
+         if (GameStatus==25)//zum test 25 im ablauf 20
+        {
+            HeadQuarter  storage tempStorage2 = HeadQuarters[1];//returns the 1th element
+            _CommandPointsHQ=tempStorage2.PointsHQ;            
+        }
+        if(_CommandPointsHQ == 0)
+        {
+            _Points=0;              // keine Verstärkung
+        }
+        if (_CommandPointsHQ>0 && _CommandPointsHQ<3)
+        {
+            _Points=2;              //Troops möglich
+        
+        }
+        if (_CommandPointsHQ>2 && _CommandPointsHQ<5)
+        {
+            _Points=4;              //Tank möglich
+        }
+        if(_CommandPointsHQ>4)
+        {
+            _Points=8;              //Mech möglich
+        }
+        return _Points;
+    }
+
+    function createUnit(uint _checkOrder)public       //erstellt die Einheit
+    {
+        uint _Support;
+        _Support = uint(UnitOrders); // datentyp Umwandlung enum >> uint
+        if(_checkOrder==2 && _Support==0)
+        {
+            //troop created
+            if(Player1Aktiv)
+            {
+                UnitsPL1.push(UnitPL("Infantry",1,1,1,true,false,4,0));//commandpoints subtrahieren -1
+            }
+            if(Player2Aktiv)
+            {
+                UnitsPL2.push(UnitPL("Infantry",1,1,1,true,true,4,8));
+            }
+        }
+        if(_checkOrder==4 && _Support==1)
+        {
+            //tank created
+            if(Player1Aktiv)
+            {
+                UnitsPL1.push(UnitPL("Tank",3,4,1,true,false,4,0)); //commandpoints subtrahieren -3
+            }
+            if(Player2Aktiv)
+            {
+                UnitsPL2.push(UnitPL("Tank",3,4,1,true,true,4,8));
+            }
+        }
+        if(_checkOrder==8 && _Support==2)
+        {
+            //mech created
+            if(Player1Aktiv)
+            {
+                UnitsPL1.push(UnitPL("Mech",1,6,5,true,false,4,0));
+            }
+            if(Player2Aktiv)
+            {
+                UnitsPL2.push(UnitPL("Mech",1,6,5,true,true,4,8));
+            }
+        }
+    }
+ /*   function setActionBitUnit()public
+    {
+        //UnitPL  _tempUnitPlayer;
+        UnitPL  _tempUnitPlayerArray[];
+        UnitPL storage tempUnit1=UnitsPL1[];        
+        UnitPL storage tempUnit2=UnitsPL2[];
+       
+        if(Player1Aktiv)
+        {
+           _tempUnitPlayerArray=tempUnit1;
+        }
+
+        if(Player2Aktiv)
+        {
+            _tempUnitPlayerArray=tempUnit2;
+        }
+        for (uint i=0; i<_tempUnitPlayer.length;i++)
+        {
+            _tempUnitPlayer=_tempUnitPlayerArray[i];
+            _tempUnitPlayer.action=true;
+            _tempUnitPlayerArray[i]=_tempUnitPlayer;
+        }
+        if(Player1Aktiv)
+        {
+            UnitsPL1=_tempUnitPlayerArray;
+        }
+
+        if(Player2Aktiv)
+        {
+            UnitsPL2=_tempUnitPlayerArray;
+        }
+    }*/
+}
