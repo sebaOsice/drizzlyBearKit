@@ -1,7 +1,7 @@
 import { drizzleConnect } from "@drizzle/react-plugin";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Nav, Navbar, NavItem, NavLink, Container, Form, Input, InputGroup, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, Form, Input } from 'reactstrap';
 const FontAwesome = require('react-fontawesome');
 
 const translateType = type => {
@@ -117,11 +117,10 @@ class ContractForm extends Component {
           type="button"
           onClick={this.handleSubmit}
         >
-          Submit
+          GO
           <FontAwesome
             className='super-crazy-colors'
-            name='file-signature'
-            size='1x'
+            name='check'
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
           />
         </Button>

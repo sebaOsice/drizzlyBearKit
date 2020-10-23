@@ -4,6 +4,8 @@ pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
 
+// import "./iii6Log.sol";
+
 contract NFToken is ERC721Full {
     string[] public types;
     uint256[] public tokenIDs;
@@ -14,7 +16,7 @@ contract NFToken is ERC721Full {
     mapping(address => uint256[]) public tokenIDsByOwner;
     mapping(address => string[]) public tokensByOwner;
 
-    constructor() public ERC721Full("CollectibleToken", "cllc") {
+    constructor() public ERC721Full("HempGenomAsset", "HGA") {
         mintGovTokenStock(
             0x58F19f364D333828dd7C95A779ad4f804bCE49d7,
             "III6 Super Seed 2020 Regular"

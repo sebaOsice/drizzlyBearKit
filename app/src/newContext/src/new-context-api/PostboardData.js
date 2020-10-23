@@ -1,17 +1,16 @@
-import { drizzleConnect } from "@drizzle/react-plugin";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { ListGroup, ListGroupItem } from 'reactstrap';
-
+import { ListGroup, ListGroupItem } from "reactstrap";
+const FontAwesome = require('react-fontawesome');
 
 class ContractData extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
 
     // Fetch initial value from chain and return cache key for reactive updates.
     var methodArgs = this.props.methodArgs ? this.props.methodArgs : [];
 
-    this.contracts = context.drizzle.contracts;
+    this.contracts = props.drizzle.contracts;
     this.state = {
       dataKey: this.contracts[this.props.contract].methods[
         this.props.method
@@ -19,9 +18,8 @@ class ContractData extends Component {
     };
   }
 
-  // Will not fix legacy component
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
+  // TODO refactor this
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { methodArgs, contract, method } = this.props;
 
     const didContractChange = contract !== nextProps.contract;
@@ -39,8 +37,10 @@ class ContractData extends Component {
   }
 
   render() {
+    const { drizzle, drizzleState } = this.props;
+
     // Contract is not yet intialized.
-    if (!this.props.contracts[this.props.contract].initialized) {
+    if (!drizzleState.contracts[this.props.contract].initialized) {
       return <span>Initializing...</span>;
     }
 
@@ -48,14 +48,14 @@ class ContractData extends Component {
     if (
       !(
         this.state.dataKey in
-        this.props.contracts[this.props.contract][this.props.method]
+        drizzleState.contracts[this.props.contract][this.props.method]
       )
     ) {
       return <span>Fetching...</span>;
     }
 
     // Show a loading spinner for future updates.
-    var pendingSpinner = this.props.contracts[this.props.contract].synced
+    var pendingSpinner = drizzleState.contracts[this.props.contract].synced
       ? ""
       : " 🔄";
 
@@ -64,18 +64,19 @@ class ContractData extends Component {
       pendingSpinner = "";
     }
 
-    var displayData = this.props.contracts[this.props.contract][
-      this.props.method
-    ][this.state.dataKey].value;
+    var displayData =
+      drizzleState.contracts[this.props.contract][this.props.method][
+        this.state.dataKey
+      ].value;
 
     // Optionally convert to UTF8
     if (this.props.toUtf8) {
-      displayData = this.context.drizzle.web3.utils.hexToUtf8(displayData);
+      displayData = drizzle.web3.utils.hexToUtf8(displayData);
     }
 
     // Optionally convert to Ascii
     if (this.props.toAscii) {
-      displayData = this.context.drizzle.web3.utils.hexToAscii(displayData);
+      displayData = drizzle.web3.utils.hexToAscii(displayData);
     }
 
     // If a render prop is given, have displayData rendered from that component
@@ -87,14 +88,25 @@ class ContractData extends Component {
     if (Array.isArray(displayData)) {
       const displayListItems = displayData.map((datum, index) => {
         return (
-          <ListGroupItem key={index}>
-            {`${datum}`}
+          <ListGroupItem key={index} className="m-0 p-1 bg-none w-100">
+            {
+              <div>
+                <div className="col-6 d-inline-block" style={{ fontWeight: 900, color: "tomato" }}> {datum[3]}</div>
+                <div className="col-6 d-inline-block" style={{ textAlign: "right" }}> {datum[2]} </div>
+                <div className=" d-inline-block col-10"> {datum[4]}</div>
+                <div className="btn d-inline-block col-1"><FontAwesome
+                  className='super-crazy-colors'
+                  name='heart-o'
+                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                />
+                </div><div className="d-inline-block col-1">{datum[5]}</div>
+              </div>}
             {pendingSpinner}
           </ListGroupItem>
         );
       });
 
-      return <ListGroup className="alert alert-success">{displayListItems}</ListGroup>;
+      return <ListGroup className="m-1 p-1 bg-none autoformatted">{displayListItems}</ListGroup>;
     }
 
     // If retun value is an object
@@ -105,19 +117,19 @@ class ContractData extends Component {
       Object.keys(displayData).forEach(key => {
         if (i !== key) {
           displayObjectProps.push(
-            <ListGroupItem key={i}>
+            <ListGroupItem key={i} className="m-0 p-1 bg-none w-100">
               <strong>{key}</strong>
-              <i>{pendingSpinner}</i>
+              {pendingSpinner}
               <br />
               {`${displayData[key]}`}
-            </ListGroupItem>,
+            </ListGroupItem>
           );
         }
 
         i++;
       });
 
-      return <ListGroup className="alert alert-success">{displayObjectProps}</ListGroup>;
+      return <ListGroup className="m-1 p-1 bg-none">{displayObjectProps}</ListGroup>;
     }
 
     return (
@@ -129,12 +141,9 @@ class ContractData extends Component {
   }
 }
 
-ContractData.contextTypes = {
-  drizzle: PropTypes.object,
-};
-
 ContractData.propTypes = {
-  contracts: PropTypes.object.isRequired,
+  drizzle: PropTypes.object.isRequired,
+  drizzleState: PropTypes.object.isRequired,
   contract: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
   methodArgs: PropTypes.array,
@@ -144,14 +153,4 @@ ContractData.propTypes = {
   render: PropTypes.func,
 };
 
-/*
- * Export connected component.
- */
-
-const mapStateToProps = state => {
-  return {
-    contracts: state.contracts,
-  };
-};
-
-export default drizzleConnect(ContractData, mapStateToProps);
+export default ContractData;

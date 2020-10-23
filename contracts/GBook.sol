@@ -1,106 +1,52 @@
 // SPDX-License-Identifier: MIT
 // pragma solidity >=0.4.21 <0.7.0;
 pragma experimental ABIEncoderV2;
+import "./iii6Log.sol";
 
-contract GBook {
-    string[] public userNames;
-    string public userName;
-    string[] public headLines;
-    string public lastHeadLine;
-    mapping(address => bool) internal isUser;
-    mapping(string => address) public AddressByName;
-    mapping(address => string) public NameByAddress;
-    mapping(address => uint256) public IDByAddress;
-    mapping(uint256 => address) public AddressByID;
-    mapping(uint256 => string) public NameByID;
-    mapping(string => uint256) public IDByName;
-
-    struct User {
-        uint256 id;
-        address adrs;
-        string userName;
-    }
-    User[] public users;
-    mapping(address => User) public UserByAddress;
-
+contract GBook is iii6Log {
     struct Post {
         uint256 id;
         address authAdr;
-        string content;
+        string authName;
         string headline;
+        string content;
         uint256 numLikes;
-        address[] likeAdrs;
     }
-    Post[] public posts;
+    Post[] private posts;
 
-    function setUserName(string memory _userName) public returns (bool) {
-        require(!isUser[msg.sender]);
-        uint256 _ID = userNames.push(_userName);
-        NameByAddress[msg.sender] = _userName;
-        AddressByName[_userName] = msg.sender;
-        AddressByID[_ID] = msg.sender;
-        NameByID[_ID] = _userName;
-        IDByAddress[msg.sender] = _ID;
-        IDByName[_userName] = _ID;
-        users.push(User(_ID, msg.sender, _userName));
-        isUser[msg.sender] = true;
-        userName = _userName;
-        UserByAddress[msg.sender] = users[_ID - 1];
+    uint256 private pc;
+    string[] private headLines;
+    mapping(address => uint256) private NumPostsByAddress;
+    mapping(address => uint256) private NumLikesForAddress;
 
-        return true;
-    }
+    constructor() public iii6Log() {}
 
-    function editUserName(string memory _userName)
+    function writePost(string memory _headLine, string memory _content)
         public
-        payable
+        onlyClient()
         returns (bool)
     {
-        require(isUser[msg.sender]);
+        uint256 _ID = pc;
+        uint256 _UC = myID();
+        headLines.push(_headLine);
+        string memory _authName = clientNames[_UC];
+        posts.push(Post(_ID, msg.sender, _authName, _headLine, _content, 0));
 
-        uint256 _ID = IDByAddress[msg.sender];
-        userNames[_ID - 1] = _userName;
-        NameByAddress[msg.sender] = _userName;
-        AddressByName[userName] = 0x0000000000000000000000000000000000000000;
-        AddressByName[_userName] = msg.sender;
-        NameByID[_ID] = _userName;
-        IDByName[userName] = 0;
-        IDByName[_userName] = _ID;
-        users[_ID - 1] = User(_ID, msg.sender, _userName);
-        UserByAddress[msg.sender] = users[_ID - 1];
-
+        NumPostsByAddress[msg.sender]++;
+        NumLikesForAddress[msg.sender] = 0;
+        pc++;
         return true;
     }
 
-    function showUsers() public view returns (User[] memory) {
-        return users;
-    }
-
-    function showUserNames() public view returns (string[] memory) {
-        return userNames;
-    }
-
-    function showUserNamme() public view returns (string memory) {
-        uint256 _ID = IDByAddress[msg.sender];
-        return userNames[_ID];
-    }
-
-    function showUser() public view returns (User memory) {
-        return UserByAddress[msg.sender];
-    }
-
-    function writePost(string memory _content, string memory _headLine)
-        public
-        returns (bool)
-    {
-        require(isUser[msg.sender]);
-        uint256 _ID = headLines.push(_headLine);
-        lastHeadLine = _headLine;
-        address[] memory empty;
-        posts.push(Post(_ID, msg.sender, _content, _headLine, 0, empty));
-        return true;
-    }
-
-    function showPosts() public view returns (Post[] memory) {
+    function showAllPosts() public view returns (Post[] memory) {
         return posts;
+    }
+
+    function showClients() public view returns (string[] memory) {
+        return clientNames;
+    }
+
+    function showHeadLines() public view returns (string[] memory) {
+        return headLines;
     }
 }

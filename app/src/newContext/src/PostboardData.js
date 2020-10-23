@@ -2,6 +2,7 @@ import { drizzleConnect } from "@drizzle/react-plugin";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { ListGroup, ListGroupItem } from 'reactstrap';
+const FontAwesome = require('react-fontawesome');
 
 
 class ContractData extends Component {
@@ -88,7 +89,18 @@ class ContractData extends Component {
       const displayListItems = displayData.map((datum, index) => {
         return (
           <ListGroupItem key={index}>
-            {`${datum}`}
+            {
+              <div>
+                <div className="col-6 d-inline-block" style={{ fontWeight: 900, color: "tomato" }}> {datum[3]}</div>
+                <div className="col-6 d-inline-block" style={{ textAlign: "right" }}> {datum[2]} </div>
+                <div className=" d-inline-block col-10"> {datum[4]}</div>
+                <div className="btn d-inline-block col-1"><FontAwesome
+                  className='super-crazy-colors'
+                  name='heart-o'
+                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                />
+                </div><div className="d-inline-block col-1">{datum[5]}</div>
+              </div>}
             {pendingSpinner}
           </ListGroupItem>
         );

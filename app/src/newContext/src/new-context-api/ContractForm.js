@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Nav, Navbar, NavItem, NavLink, Container, Form, Input, InputGroup, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, Form, Input } from 'reactstrap';
 const FontAwesome = require('react-fontawesome');
 
 const translateType = type => {
@@ -113,16 +113,17 @@ class ContractForm extends Component {
         })}
         <Button
           key="submit"
-          className="pure-button w-100 btn-warning mt-2"
+          className="pure-button w-100 btn-info mt-2"
           type="button"
           onClick={this.handleSubmit}
-          color="info"
+          color="success"
+          style={{ fontWeight: 900 }}
         >
-          Submit
+          GO &nbsp;
           <FontAwesome
             className='super-crazy-colors'
-            name='edit'
-            size='1x'
+            name='bus'
+
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
           />
         </Button>

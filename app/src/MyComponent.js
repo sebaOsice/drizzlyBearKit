@@ -9,7 +9,7 @@ import { Button, Nav, Navbar, NavItem, Form } from 'reactstrap';
 import { Blockie, EthAddress } from "rimble-ui";
 const FontAwesome = require('react-fontawesome');
 
-const { ContractData, ContractForm } = newContextComponents;
+const { ContractData, ContractForm, PostboardData } = newContextComponents;
 
 export default ({ drizzle, drizzleState }) => {
   // destructure drizzle and drizzleState from props
@@ -28,19 +28,19 @@ export default ({ drizzle, drizzleState }) => {
               <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">TUTORIALS <FontAwesome
                 className='super-crazy-colors'
                 name='graduation-cap'
-                size='1x'
+
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></Button>
               <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">PROJECTS <FontAwesome
                 className='super-crazy-colors'
                 name='rocket'
-                size='1x'
+
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></Button>
               <Button className="btn btn-outline-success btn-light ml-2 my-2 my-sm-0">SPONSORING <FontAwesome
                 className='super-crazy-colors'
                 name='heart'
-                size='1x'
+
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></Button>
             </NavItem>
@@ -52,7 +52,7 @@ export default ({ drizzle, drizzleState }) => {
               <Button className="btn btn-outline-success btn-light my-2 my-sm-0" type="submit">Search <FontAwesome
                 className='super-crazy-colors'
                 name='search'
-                size='1x'
+
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></Button>
             </Form>
@@ -145,7 +145,7 @@ export default ({ drizzle, drizzleState }) => {
                   <p><a className="btn btn-lg btn-warning" href="#https://t.me/drizzlyBearSupportDojo" role="button">T.Me <FontAwesome
                     className='super-crazy-colors'
                     name='mobile'
-                    size='1x'
+
                     style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
                   /></a></p>
                 </div>
@@ -176,7 +176,7 @@ export default ({ drizzle, drizzleState }) => {
             <br /><br />
             Wowzers ... drizzlyBearAlistiCaliKushPiffinDopyeah !
         </p>
-          <p className="col-4 d-inline-block alert-success">
+          <div className="col-4 d-inline-block alert-success">
             <strong>My Balance: </strong>
             <h1 style={{ fontSize: "4em" }}><ContractData
               drizzle={drizzle}
@@ -192,8 +192,8 @@ export default ({ drizzle, drizzleState }) => {
                 method="symbol"
                 hideIndicator
               /></h1>
-          </p>
-          <p className="col-4 d-inline-block alert-info" >
+          </div>
+          <div className="col-4 d-inline-block alert-info" >
             <strong>Total Supply: </strong>
             <h1 style={{ fontSize: "4em" }}><ContractData
               drizzle={drizzle}
@@ -209,44 +209,44 @@ export default ({ drizzle, drizzleState }) => {
                 method="symbol"
                 hideIndicator
               /></h1>
-          </p>
-          <p className="col-4 d-inline-block">
+          </div>
+          <div className="col-4 d-inline-block">
             <h3>Send Tokens</h3>
             <ContractForm
               drizzle={drizzle}
               contract="TutorialToken"
               method="transfer"
               labels={["To Address", "Amount to Send"]}
-            /></p>
+            /></div>
         </div>
 
 
 
-        <div class="container marketing">
+        <div className="container marketing">
 
 
-          <div class="row">
-            <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
+          <div className="row">
+            <div className="col-lg-4" style={{ textAlign: "center" }}>
+              <img className="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>ANONYMOUS</h2>
               <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-              <p><a class="btn btn-danger" href="#" role="button">View details »</a></p>
+              <p><a className="btn btn-danger" href="#" role="button">View details »</a></p>
             </div>
-            <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
+            <div className="col-lg-4" style={{ textAlign: "center" }}>
+              <img className="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>DECENTRAL</h2>
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-              <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
+              <p><a className="btn btn-warning" href="#" role="button">View details »</a></p>
             </div>
-            <div class="col-lg-4" style={{ textAlign: "center" }}>
-              <img class="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
+            <div className="col-lg-4" style={{ textAlign: "center" }}>
+              <img className="bd-placeholder-img rounded-circle" width="140" height="140" src={fav} preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140" />
               <h2>AUTONOMOUS</h2>
               <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              <p><a class="btn btn-success" href="#" role="button">View details »</a></p>
+              <p><a className="btn btn-success" href="#" role="button">View details »</a></p>
             </div>
           </div>
 
-          <hr class="featurette-divider" />
+          <hr className="featurette-divider" />
 
           <div className="container section mb-5 pb-5">
             <h2>I think my Drizzly's going all Nifty !</h2>
@@ -255,7 +255,7 @@ export default ({ drizzle, drizzleState }) => {
               Same as above copy and paste the oops out of the <i className="alert-warning">./contracts/NFToken.sol</i> you know the rest ... So pick up a shovel if you wanna get dirty o0 <br /><br />
             Jump right in !
         </p>
-            <p className="col-4 d-inline-block">
+            <div className="col-4 d-inline-block">
 
               <strong>My Collectibles : <ContractData
                 drizzle={drizzle}
@@ -271,8 +271,8 @@ export default ({ drizzle, drizzleState }) => {
                 contract="NFToken"
                 method="getTypes"
               />
-            </p>
-            <p className="col-4 d-inline-block">
+            </div>
+            <div className="col-4 d-inline-block">
               <strong>All Collectibles : <ContractData
                 drizzle={drizzle}
                 drizzleState={drizzleState}
@@ -290,7 +290,7 @@ export default ({ drizzle, drizzleState }) => {
 
 
               />
-            </p>
+            </div>
 
 
             <h3>Mint Tokens</h3>
@@ -302,88 +302,128 @@ export default ({ drizzle, drizzleState }) => {
             />
           </div>
 
-          <hr class="featurette-divider" />
+          <hr className="featurette-divider" />
 
-          <div class="row featurette">
-            <div class="col-md-5">
+          <div className="row featurette">
+            <div className="col-md-5">
               <h3>Blockchain Guestbook</h3>
               <ContractData
                 drizzle={drizzle}
                 drizzleState={drizzleState}
                 contract="GBook"
-                method="showUser"
+                method="nikNow"
 
               />
               <h3>UserList</h3>
-              <p className="d-block">
+              <div className="d-block">
                 <ContractData
                   drizzle={drizzle}
                   drizzleState={drizzleState}
                   contract="GBook"
-                  method="showUsers"
+                  method="showClients"
+
+                /> <ContractData
+                  drizzle={drizzle}
+                  drizzleState={drizzleState}
+                  contract="GBook"
+                  method="clientByAdr"
+                  methodArgs={[drizzleState.accounts[0]]}
 
                 />
-              </p>
-              <p class="col-md-3 d-inline-block"> <h3>Set User Name</h3>
+                {
+
+                }
+              </div>
+              <div className="col-md-6 d-inline-block"> Set User Name
                 <ContractForm
                   drizzle={drizzle}
                   contract="GBook"
-                  method="setUserName"
-                  labels={["Screen Name"]}
-                /></p>
-              <p class="col-md-3 d-inline-block"> <h3>Edit User Name</h3>
+                  method="setName"
+                  labels={["Name"]}
+                /></div>
+              <div className="col-md-6 d-inline-block"> Edit User Name
                 <ContractForm
                   drizzle={drizzle}
                   contract="GBook"
-                  method="editUserName"
-                  labels={["Screen Name"]}
-                /></p>
-              <p class="col-md-3 d-inline-block"> <h3>Write a Post</h3>
+                  method="editName"
+                  labels={["Name"]}
+                /></div>
+              <div className="col-md-6 d-inline-block"> Delete Me
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="deleteMe"
+
+                /></div>
+              <div className="col-md-6 d-inline-block"> Delete User [ADMIN]
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="adminDelete"
+                  labels={["Address"]}
+                /></div>
+              <div className="col-md-6 d-inline-block"> Edit User [ADMIN]
+                <ContractForm
+                  drizzle={drizzle}
+                  contract="GBook"
+                  method="adminEdit"
+                  labels={["Address", "Name", "isAdmin"]}
+                /></div>
+
+            </div>
+            <div className="col-md-7">
+              <h3>The Postboard</h3>
+              <div className="col-md-12 d-inline-block">
                 <ContractForm
                   drizzle={drizzle}
                   contract="GBook"
                   method="writePost"
                   labels={["Title", "Content"]}
-                /></p>
-            </div>
-            <div class="col-md-7">
-              <h3>The Postboard</h3>
-              <p className="d-block">
+                /></div>
+              <div className="d-block">
+                <PostboardData
+                  drizzle={drizzle}
+                  drizzleState={drizzleState}
+                  contract="GBook"
+                  method="showAllPosts"
+
+                />
+              </div>            </div>
+          </div>
+
+          <hr className="featurette-divider" />
+
+          <div className="row featurette">
+            <div className="col-md-7">
+              <div className="d-block">
                 <ContractData
                   drizzle={drizzle}
                   drizzleState={drizzleState}
                   contract="GBook"
-                  method="showPosts"
+                  method="nikByAdr"
+                  methodArgs={[drizzleState.accounts[0]]}
 
                 />
-              </p>            </div>
-          </div>
-
-          <hr class="featurette-divider" />
-
-          <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              </div>
             </div>
-            <div class="col-md-5 order-md-1">
-              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            <div className="col-md-5 order-md-1">
+              <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
             </div>
           </div>
 
-          <hr class="featurette-divider" />
+          <hr className="featurette-divider" />
 
-          <div class="row featurette">
-            <div class="col-md-7">
-              <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <div className="row featurette">
+            <div className="col-md-7">
+              <h2 className="featurette-heading">Imagine gambling decentral onChain <span className="text-muted">2 Player</span></h2>
+              <p className="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             </div>
-            <div class="col-md-5">
-              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            <div className="col-md-5">
+              <svg className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
             </div>
           </div>
 
-          <hr class="featurette-divider" />
+          <hr className="featurette-divider" />
 
 
 
