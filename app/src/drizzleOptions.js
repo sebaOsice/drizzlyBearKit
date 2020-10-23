@@ -8,6 +8,7 @@ import Todo from "./contracts/Todo.json";
 import hempireAssets from "./contracts/hempireAssets.json";
 import iii6Log from "./contracts/iii6Log.json";
 import III6 from "./contracts/III6.json";
+import MilitaryChess from "./contracts/MilitaryChess.json";
 const devProvider = "ws://localhost:7545";
 const buildProvider = {
   host: "https://xdai.poanetwork.dev",
